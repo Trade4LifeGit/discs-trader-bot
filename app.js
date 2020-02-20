@@ -7,8 +7,6 @@ const TelegrafInlineMenu = require('telegraf-inline-menu')
 
 const menu = new TelegrafInlineMenu('Main Menu')
 
-// menu.urlButton('EdJoPaTo.de', 'https://edjopato.de')
-
 let mainMenuToggle = false
 menu.toggle('toggle me', 'a', {
   setFunc: (_ctx, newVal) => {
