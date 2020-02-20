@@ -116,6 +116,7 @@ menu.submenu('Photo Menu', 'photo', new TelegrafInlineMenu('', {
 menu.setCommand('start')
 
 // const token = readFileSync('token.txt', 'utf8').trim()
+
 const bot = new Telegraf('960038286:AAGZZHaFHCj1VCxvkBhGTLAYYWxd7DT7JNk')
 bot.use(session())
 
