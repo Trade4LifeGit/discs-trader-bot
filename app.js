@@ -1,45 +1,31 @@
 const Telegraf = require('telegraf')
 const TelegrafInlineMenu = require('telegraf-inline-menu')
-
-const menu = new TelegrafInlineMenu('Ну здравствуйте, тут у нас главное меню:)')
-
-menu.simpleButton('Логин', 'login click', {
-  doFunc: async ctx => ctx.answerCbQuery('you clicked login')
-})
-
-menu.simpleButton('Регистрация', 'register click', {
-  doFunc: async ctx => ctx.answerCbQuery('you clicked registration')
-})
-
-menu.setCommand('start')
-
-
-const loginMenu = new TelegrafInlineMenu('Меню входа')
-
-loginMenu.simpleButton('Логин', 'login click', {
-  doFunc: async ctx => ctx.answerCbQuery('you clicked login')
-})
-
-menu.submenu('Login menu', 'login', loginMenu)
+const session = require('telegraf/session')
 
 
 const bot = new Telegraf('960038286:AAGZZHaFHCj1VCxvkBhGTLAYYWxd7DT7JNk')
 
-bot.use((ctx, next) => {
-  if (ctx.callbackQuery) {
-    console.log(ctx.callbackQuery.data)
-  }
-  return next()
-})
-
-bot.use(menu.init({
-  backButtonText: 'back…',
-  mainMenuButtonText: 'back to main menu…'
-}))
-
 bot.catch(error => {
   console.log('telegraf error', error.response, error.parameters, error.on || error)
 })
+
+bot.start((ctx) => {
+  console.log(ctx.message);
+  ctx.reply('Здарова, ' + ctx.from.first_name + ' ' + (ctx.from.last_name ? ctx.from.last_name : '') + '!\n' +
+  'Тут такое дело: на данный момент бот находится в разработке и его функции ограничены, \n' +
+  'но несмотря на это некоторые функции можно опробовать уже сейчас: \n' +
+  '/personal \n'+
+  '/menu \n' +
+  '/test');
+});
+
+bot.command('personal', (ctx) => {
+  ctx.reply('Личный кабинет ещё не готов');
+});
+
+bot.command('menu', (ctx) => {
+  ctx.reply('Меню ещё не готово');
+});
 
 async function startup() {
   await bot.launch()
