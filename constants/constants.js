@@ -1,6 +1,6 @@
-const TELEGRAM_BOT_KEY = "960038286:AAGZZHaFHCj1VCxvkBhGTLAYYWxd7DT7JNk"
+export const TELEGRAM_BOT_KEY = "960038286:AAGZZHaFHCj1VCxvkBhGTLAYYWxd7DT7JNk"
 
-const mockedGames ={
+export const mockedGames ={
     games:[
         {
             id: "1",
@@ -35,5 +35,14 @@ const mockedGames ={
     ]
 }
 
-module.exports.mockedGames = mockedGames;
-module.exports.TELEGRAM_BOT_KEY = TELEGRAM_BOT_KEY;
+// Метод Сёмы для апдейтов
+const replaceReplyMarkup = async(ctx, newMarkup) => {
+    try{
+        const chatID = ctx.update.callback_query.message.chat.id;
+        const messageID = ctx.update.callback_query.message.message_id;
+        return bot.telegram.editMessageReplyMarkup(chatID, messageID, null, newMarkup);
+
+    } catch (e) {
+        console.log("Не получилось удалить кнопочки после апдейта поста");
+    }
+}
