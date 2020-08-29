@@ -1,6 +1,6 @@
-const Telegraf = require('telegraf')
+import Telegraf from 'telegraf';
 const TelegrafInlineMenu = require('telegraf-inline-menu')
-const {mockedGames, TELEGRAM_BOT_KEY} = require('./constants.js')
+const {mockedGames, TELEGRAM_BOT_KEY} = require('./constants/constants.js')
 
 const bot = new Telegraf(TELEGRAM_BOT_KEY);
 // bot.use(Telegraf.log());
@@ -22,18 +22,17 @@ firstMenu.simpleButton('Мои объявления', 'c', {
   doFunc: ctx => ctx.answerCbQuery('Поздравляю! Вы решили посмотреть на свои лоты!')
 });
 
-// console.log(mockedGames.games[0]);
 let currentGameNumber = 0;
 
-firstMenu.submenu('Я просто смотрю', 'explore', new TelegrafInlineMenu(mockedGames.games[currentGameNumber].name, {
-  photo: mockedGames.games[currentGameNumber].pictureURL
+firstMenu.submenu('Я просто смотрю', 'explore', new TelegrafInlineMenu(() => mockedGames.games[currentGameNumber].name, {
+  photo: () => {
+    return mockedGames.games[currentGameNumber].pictureURL
+  }
 }))
   .setCommand('explore')
   .simpleButton('Назад', 'a', {
     doFunc: async () => {
       currentGameNumber--
-      console.log("nazad ", currentGameNumber)
-      // ctx.answerCbQuery('Just a callback query answer')
     }
   })
   .simpleButton('В меню', 'b', {
@@ -43,11 +42,20 @@ firstMenu.submenu('Я просто смотрю', 'explore', new TelegrafInlineM
   .simpleButton('Вперёд', 'c', {
     doFunc: async () => {
       currentGameNumber++
-      console.log("vperyod ", currentGameNumber)
-      // ctx.answerCbQuery('Just a callback query answer')
     },
     joinLastRow: true
   })
+
+const replaceReplyMarkup = async(ctx, newMarkup) => {
+  try{
+    const chatID = ctx.update.callback_query.message.chat.id;
+    const messageID = ctx.update.callback_query.message.message_id;
+    return bot.telegram.editMessageReplyMarkup(chatID, messageID, null, newMarkup);
+
+  } catch (e) {
+    console.log("Не получилось удалить кнопочки после апдейта поста");
+  }
+}
 
 
 bot.use(firstMenu.init());
