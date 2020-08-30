@@ -15,8 +15,8 @@ bot.start(ctx => ctx.reply(greetingText, mainMenu));
 
 // Сюда передать внешнюю переменную для перелистывания игр через кнопки
 bot.hears('🎮 Я просто смотрю', ctx => {
-  // ctx.reply('Передать сюда текст (название игры)', Extra.markup(exploreMenu))
-  ctx.replyWithPhoto({url: mockedGames.games[0].pictureURL}, Extra.markup(exploreMenu))
+  // ctx.reply({url: mockedGames.games[0].pictureURL}, Extra.markup(exploreMenu))
+  ctx.reply({text: 'Picture caption' + mockedGames.games[0].pictureURL}, Extra.markup(exploreMenu))
 });
 
 // bot.use(firstMenu.init());
