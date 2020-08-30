@@ -7,3 +7,8 @@ export const mainMenu =
         .oneTime()
         .resize()
         .extra()
+
+export const exploreMenu = Markup.inlineKeyboard([
+    Markup.urlButton('❤️', 'http://telegraf.js.org'),
+    Markup.callbackButton('Delete', 'delete')
+])
