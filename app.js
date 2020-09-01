@@ -1,11 +1,11 @@
-import Telegraf, {Extra, Markup} from 'telegraf';
+import Telegraf, {Extra, Markup, Telegram} from 'telegraf';
 import {TELEGRAM_BOT_KEY} from './constants/constants.js';
 import {exploreMenu, mainMenu} from "./keyboard/keyboard";
 import {greetingText, mockedGames} from "./constants/constants";
 import {firstMenu} from "./menu/menu";
+import {generateMessageOptions} from "./utils/utils";
 
 const bot = new Telegraf(TELEGRAM_BOT_KEY);
-// bot.use(Telegraf.log());
 
 bot.catch(error => {
   console.log('telegraf error', error.response, error.parameters, error.on || error)
@@ -15,11 +15,12 @@ bot.start(ctx => ctx.reply(greetingText, mainMenu));
 
 // Сюда передать внешнюю переменную для перелистывания игр через кнопки
 bot.hears('🎮 Я просто смотрю', ctx => {
-  // ctx.reply({url: mockedGames.games[0].pictureURL}, Extra.markup(exploreMenu))
-  ctx.reply({text: 'Picture caption' + mockedGames.games[0].pictureURL}, Extra.markup(exploreMenu))
+  bot.telegram.sendPhoto(ctx.from.id,
+      mockedGames.games[0].pictureURL,
+      {"reply_markup":{"inline_keyboard":[[{"text":"test button","callback_data":"test","hide":false}]]},
+      caption: 'test'});
 });
 
-// bot.use(firstMenu.init());
 bot.startPolling();
 
 
