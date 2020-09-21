@@ -21,7 +21,7 @@ export const exploreGame = (gameName, gameCaption, psnURL) => {
         inline_keyboard: [
             [
                 {"text": "⬅️ Previous", "callback_data": "test1", "hide": false},
-                {"text": "Next ➡️", "callback_data": "test2", "hide": false}
+                {"text": "Next ➡️", "callback_data": 'exploreNextGame', "hide": false}
             ],
             [
                 {"text": "Buy this game 🤝", "callback_data": "test1", "hide": false},

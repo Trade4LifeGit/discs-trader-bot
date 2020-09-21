@@ -19,8 +19,8 @@
   "homepage": "https://github.com/jonarizzz/PS4_trade_bot#readme",
   "dependencies": {
     "esm": "^3.2.25",
-    "telegraf": "^3.32.0",
-    "telegraf-inline-menu": "^4.0.0"
+    "telegraf": "^3.38.0",
+    "telegraf-inline-menu": "^4.0.1"
   },
   "devDependencies": {}
 }
