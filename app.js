@@ -19,29 +19,23 @@ bot.hears('🎮 Я просто смотрю', ctx => {
     bot.telegram.sendPhoto(ctx.from.id,
         mockedGames.games[currentGameNumb].pictureURL,
         {
-            "reply_markup": exploreGame(mockedGames.games[currentGameNumb].name,
-                mockedGames.games[currentGameNumb].caption,
-                mockedGames.games[currentGameNumb].psnPageURL),
+            reply_markup: exploreGame(mockedGames.games[currentGameNumb].psnPageURL),
             caption: mockedGames.games[currentGameNumb].name + "\n " + mockedGames.games[currentGameNumb].caption
         });
 });
 
 bot.action('exploreNextGame', (ctx) => {
-    const chatID = ctx.update.callback_query.message.chat.id;
-    const messageID = ctx.update.callback_query.message.message_id;
-    const inlineMessageID = ctx.update.callback_query.inline_message_id;
-    console.log(chatID, " ", messageID, " ", inlineMessageID);
-
-    // here increment current game number
-
+    currentGameNumb = currentGameNumb + 1;
     ctx.editMessageMedia({
         type: "photo",
-        media: mockedGames.games[1].pictureURL
+        media: mockedGames.games[currentGameNumb].pictureURL
     });
 
-    ctx.editMessageCaption("123", exploreGame(mockedGames.games[1].name,
-        mockedGames.games[1].caption,
-        mockedGames.games[1].psnPageURL))
+    ctx.editMessageCaption(mockedGames.games[currentGameNumb].name + "\n" + mockedGames.games[currentGameNumb].caption,
+        {
+            reply_markup: exploreGame(mockedGames.games[currentGameNumb].psnPageURL)
+        }
+    )
 })
 
 bot.startPolling();

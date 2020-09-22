@@ -16,7 +16,7 @@ export const exploreMenu = {
     "columns": 2
 }
 
-export const exploreGame = (gameName, gameCaption, psnURL) => {
+export const exploreGame = (psnURL) => {
     return {
         inline_keyboard: [
             [
