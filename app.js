@@ -10,11 +10,10 @@ bot.catch(error => {
     console.log('telegraf error', error.response, error.parameters, error.on || error)
 });
 
-bot.start(ctx => ctx.reply(greetingText, mainMenu));
-
 let currentGameNumb = 0;
 
-// Сюда передать внешнюю переменную для перелистывания игр через кнопки
+bot.start(ctx => ctx.reply(greetingText, mainMenu));
+
 bot.hears('🎮 Я просто смотрю', ctx => {
     bot.telegram.sendPhoto(ctx.from.id,
         mockedGames.games[currentGameNumb].pictureURL,
@@ -24,18 +23,32 @@ bot.hears('🎮 Я просто смотрю', ctx => {
         });
 });
 
-bot.action('exploreNextGame', (ctx) => {
-    currentGameNumb = currentGameNumb + 1;
+bot.action('exploreNextGame', ctx => {
+    // how to make it transactional?
+    currentGameNumb++;
+    ctx.editMessageCaption(
+        mockedGames.games[currentGameNumb].name + "\n" + mockedGames.games[currentGameNumb].caption,
+        exploreGame(mockedGames.games[currentGameNumb].psnPageURL)
+
+    );
+    ctx.editMessageMedia({
+        type: "photo",
+        media: mockedGames.games[currentGameNumb].pictureURL
+    });
+})
+
+bot.action('explorePreviousGame', ctx => {
+    currentGameNumb--;
+    ctx.editMessageCaption(
+        mockedGames.games[currentGameNumb].name + "\n" + mockedGames.games[currentGameNumb].caption,
+        exploreGame(mockedGames.games[currentGameNumb].psnPageURL)
+
+    );
     ctx.editMessageMedia({
         type: "photo",
         media: mockedGames.games[currentGameNumb].pictureURL
     });
 
-    ctx.editMessageCaption(mockedGames.games[currentGameNumb].name + "\n" + mockedGames.games[currentGameNumb].caption,
-        {
-            reply_markup: exploreGame(mockedGames.games[currentGameNumb].psnPageURL)
-        }
-    )
 })
 
 bot.startPolling();

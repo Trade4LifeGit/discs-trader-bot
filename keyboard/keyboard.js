@@ -20,7 +20,7 @@ export const exploreGame = (psnURL) => {
     return {
         inline_keyboard: [
             [
-                {"text": "⬅️ Previous", "callback_data": "test1", "hide": false},
+                {"text": "⬅️ Previous", "callback_data": 'explorePreviousGame', "hide": false},
                 {"text": "Next ➡️", "callback_data": 'exploreNextGame', "hide": false}
             ],
             [
