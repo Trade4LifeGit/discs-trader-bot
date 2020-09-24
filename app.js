@@ -1,7 +1,8 @@
 import Telegraf from 'telegraf';
 import {TELEGRAM_BOT_KEY} from './constants/constants.js';
-import {exploreGame, exploreMenu, mainMenu} from "./keyboard/keyboard";
+import {exploreGame, mainMenu} from "./keyboard/keyboard";
 import {greetingText, mockedGames} from "./constants/constants";
+import {getGamesFromCore} from "./utils/utils";
 
 
 const bot = new Telegraf(TELEGRAM_BOT_KEY);
@@ -11,39 +12,43 @@ bot.catch(error => {
 });
 
 let currentGameNumb = 0;
+let gamesToExplore = [];
 
 bot.start(ctx => ctx.reply(greetingText, mainMenu));
 
 bot.hears('🎮 Я просто смотрю', ctx => {
-    bot.telegram.sendPhoto(ctx.from.id,
-        mockedGames.games[currentGameNumb].pictureURL,
-        {
-            reply_markup: exploreGame(mockedGames.games[currentGameNumb].psnPageURL),
-            caption: mockedGames.games[currentGameNumb].name + "\n " + mockedGames.games[currentGameNumb].caption
-        });
+    getGamesFromCore("PSN", 1, 5).then(result => {
+        gamesToExplore = result.data.games;
+        bot.telegram.sendPhoto(ctx.from.id,
+            gamesToExplore[currentGameNumb].image,
+            {
+                reply_markup: exploreGame(gamesToExplore[currentGameNumb].image),
+                caption: gamesToExplore[currentGameNumb].title + "\n " + gamesToExplore[currentGameNumb].description
+            }).then();
+    });
+
 });
 
 bot.action('exploreNextGame', ctx => {
-    // TODO: think if it could be transactional
     currentGameNumb++;
     ctx.editMessageMedia({
         type: "photo",
-        media: mockedGames.games[currentGameNumb].pictureURL,
-        caption: mockedGames.games[currentGameNumb].name + "\n" + mockedGames.games[currentGameNumb].caption
+        media: gamesToExplore[currentGameNumb].image,
+        caption: gamesToExplore[currentGameNumb].title + "\n" + gamesToExplore[currentGameNumb].description
     }, {
-        reply_markup: exploreGame(mockedGames.games[currentGameNumb].psnPageURL),
-    });
+        reply_markup: exploreGame(gamesToExplore[currentGameNumb].image),
+    }).then();
 })
 
 bot.action('explorePreviousGame', ctx => {
     currentGameNumb--;
     ctx.editMessageMedia({
         type: "photo",
-        media: mockedGames.games[currentGameNumb].pictureURL,
-        caption: mockedGames.games[currentGameNumb].name + "\n" + mockedGames.games[currentGameNumb].caption
+        media: gamesToExplore[currentGameNumb].image,
+        caption: gamesToExplore[currentGameNumb].title + "\n" + gamesToExplore[currentGameNumb].description
     }, {
-        reply_markup: exploreGame(mockedGames.games[currentGameNumb].psnPageURL),
-    }).then(e => console.log(e));
+        reply_markup: exploreGame(gamesToExplore[currentGameNumb].image),
+    }).then();
 })
 
 bot.startPolling();

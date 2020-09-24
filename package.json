@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/jonarizzz/PS4_trade_bot#readme",
   "dependencies": {
+    "axios": "^0.20.0",
     "esm": "^3.2.25",
     "telegraf": "^3.38.0",
     "telegraf-inline-menu": "^4.0.1"
