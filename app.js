@@ -1,4 +1,4 @@
-import Telegraf, {Extra, Markup, Telegram} from 'telegraf';
+import Telegraf from 'telegraf';
 import {TELEGRAM_BOT_KEY} from './constants/constants.js';
 import {exploreGame, exploreMenu, mainMenu} from "./keyboard/keyboard";
 import {greetingText, mockedGames} from "./constants/constants";
@@ -24,31 +24,26 @@ bot.hears('🎮 Я просто смотрю', ctx => {
 });
 
 bot.action('exploreNextGame', ctx => {
-    // how to make it transactional?
+    // TODO: think if it could be transactional
     currentGameNumb++;
-    ctx.editMessageCaption(
-        mockedGames.games[currentGameNumb].name + "\n" + mockedGames.games[currentGameNumb].caption,
-        exploreGame(mockedGames.games[currentGameNumb].psnPageURL)
-
-    );
     ctx.editMessageMedia({
         type: "photo",
-        media: mockedGames.games[currentGameNumb].pictureURL
+        media: mockedGames.games[currentGameNumb].pictureURL,
+        caption: mockedGames.games[currentGameNumb].name + "\n" + mockedGames.games[currentGameNumb].caption
+    }, {
+        reply_markup: exploreGame(mockedGames.games[currentGameNumb].psnPageURL),
     });
 })
 
 bot.action('explorePreviousGame', ctx => {
     currentGameNumb--;
-    ctx.editMessageCaption(
-        mockedGames.games[currentGameNumb].name + "\n" + mockedGames.games[currentGameNumb].caption,
-        exploreGame(mockedGames.games[currentGameNumb].psnPageURL)
-
-    );
     ctx.editMessageMedia({
         type: "photo",
-        media: mockedGames.games[currentGameNumb].pictureURL
-    });
-
+        media: mockedGames.games[currentGameNumb].pictureURL,
+        caption: mockedGames.games[currentGameNumb].name + "\n" + mockedGames.games[currentGameNumb].caption
+    }, {
+        reply_markup: exploreGame(mockedGames.games[currentGameNumb].psnPageURL),
+    }).then(e => console.log(e));
 })
 
 bot.startPolling();

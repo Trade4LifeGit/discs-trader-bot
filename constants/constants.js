@@ -1,4 +1,5 @@
-export const TELEGRAM_BOT_KEY = "960038286:AAGZZHaFHCj1VCxvkBhGTLAYYWxd7DT7JNk"
+export const TELEGRAM_BOT_KEY = "960038286:AAGZZHaFHCj1VCxvkBhGTLAYYWxd7DT7JNk";
+export const BOT_CORE_URL = "http://localhost:8081";
 
 export const mockedGames ={
     games:[
