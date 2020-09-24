@@ -1,7 +1,7 @@
 import Telegraf from 'telegraf';
 import {TELEGRAM_BOT_KEY} from './constants/constants.js';
 import {exploreGame, mainMenu} from "./keyboard/keyboard";
-import {greetingText, mockedGames} from "./constants/constants";
+import {greetingText} from "./constants/constants";
 import {getGamesFromCore} from "./utils/utils";
 
 
@@ -30,7 +30,8 @@ bot.hears('🎮 Я просто смотрю', ctx => {
 });
 
 bot.action('exploreNextGame', ctx => {
-    currentGameNumb++;
+    // Temporary
+    currentGameNumb === gamesToExplore.length - 1 ? currentGameNumb = 0 : currentGameNumb++;
     ctx.editMessageMedia({
         type: "photo",
         media: gamesToExplore[currentGameNumb].image,
@@ -41,7 +42,8 @@ bot.action('exploreNextGame', ctx => {
 })
 
 bot.action('explorePreviousGame', ctx => {
-    currentGameNumb--;
+    // Temporary
+    currentGameNumb === 0 ? currentGameNumb = gamesToExplore.length - 1 : currentGameNumb--;
     ctx.editMessageMedia({
         type: "photo",
         media: gamesToExplore[currentGameNumb].image,
