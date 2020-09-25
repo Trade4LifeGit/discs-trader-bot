@@ -38,8 +38,8 @@ bot.action('exploreNextGame', ctx => {
         caption: gamesToExplore[currentGameNumb].title + "\n" + gamesToExplore[currentGameNumb].description
     }, {
         reply_markup: exploreGame(gamesToExplore[currentGameNumb].image),
-    }).then();
-})
+    }).then(() => ctx.answerCbQuery());
+});
 
 bot.action('explorePreviousGame', ctx => {
     // Temporary
@@ -50,8 +50,8 @@ bot.action('explorePreviousGame', ctx => {
         caption: gamesToExplore[currentGameNumb].title + "\n" + gamesToExplore[currentGameNumb].description
     }, {
         reply_markup: exploreGame(gamesToExplore[currentGameNumb].image),
-    }).then();
-})
+    }).then(() => ctx.answerCbQuery());
+});
 
 bot.startPolling();
 
