@@ -6,6 +6,7 @@ import {getGamesFromCore} from "./utils/utils";
 
 
 const bot = new Telegraf(TELEGRAM_BOT_KEY);
+// bot.use(Telegraf.log())
 
 bot.catch(error => {
     console.log('telegraf error', error.response, error.parameters, error.on || error)
@@ -61,4 +62,4 @@ async function startup() {
     console.log(new Date(), 'Bot started as', bot.options.username)
 }
 
-startup();
+startup().then();
