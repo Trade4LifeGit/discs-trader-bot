@@ -16,7 +16,7 @@ export const sellGameScene = new WizardScene('sellGameScene',
             ctx.reply('Canceled', mainMenu);
             return ctx.scene.leave();
         } else {
-            ctx.reply(`A value you entered is not a number! Please enter a valid value!`);
+            ctx.reply(costValidationErrorText);
             return;
         }
         return ctx.scene.leave();

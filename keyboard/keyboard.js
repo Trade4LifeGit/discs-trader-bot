@@ -1,8 +1,11 @@
 import {Markup} from "telegraf";
-import {cancelButtonText, exploreButtonText} from "../constants/constants";
+import {
+    buyGameButtonText, buyGamesButtonText, cancelButtonText, exploreButtonText, myOffersButtonText, nextGameButtonText,
+    previousGameButtonText, sellGameButtonText, sellGamesButtonText, thisGameInPSNButtonText
+} from "../constants/constants";
 
 export const mainMenu =
-    Markup.keyboard(['⬅️ Купить игру', '➡️ Продать игру', '🤝 Мои объявления', exploreButtonText], {
+    Markup.keyboard([buyGamesButtonText, sellGamesButtonText, myOffersButtonText, exploreButtonText], {
         columns: 2
     })
         .oneTime()
@@ -10,20 +13,23 @@ export const mainMenu =
         .extra()
 
 export const cancelMenu =
-    Markup.keyboard([cancelButtonText]).oneTime().resize().extra()
+    Markup.keyboard([cancelButtonText])
+        .oneTime()
+        .resize()
+        .extra()
 
 export const exploreGame = (psnURL) => {
     return {
         inline_keyboard: [
             [
-                {"text": "⬅️ Previous", "callback_data": 'explorePreviousGame', "hide": false},
-                {"text": "Next ➡️", "callback_data": 'exploreNextGame', "hide": false}
+                {"text": previousGameButtonText, "callback_data": 'explorePreviousGame', "hide": false},
+                {"text": nextGameButtonText, "callback_data": 'exploreNextGame', "hide": false}
             ],
             [
-                {"text": "Buy this game 🤝", "callback_data": "test1", "hide": false},
-                {"text": "Sell this game 💰️", "callback_data": 'exploreSellGame', "hide": false}
+                {"text": buyGameButtonText, "callback_data": "test1", "hide": false},
+                {"text": sellGameButtonText, "callback_data": 'exploreSellGame', "hide": false}
             ],
-            [Markup.urlButton("This game in PSN", psnURL)]
+            [Markup.urlButton(thisGameInPSNButtonText, psnURL)]
         ],
         "columns": 2
     }
