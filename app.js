@@ -2,7 +2,7 @@ import Telegraf, {session, Stage} from 'telegraf';
 import {TELEGRAM_BOT_KEY} from './constants/constants.js';
 import {exploreGame, mainMenu} from "./keyboard/keyboard";
 import {greetingText} from "./constants/constants";
-import {getGamesFromCore} from "./utils/utils";
+import {getGamesFromCore, postUserInfo} from "./utils/utils";
 import {sellGameScene} from "./scenes/scenes";
 
 
@@ -19,7 +19,12 @@ bot.catch(error => {
 let currentGameNumb = 0;
 let gamesToExplore = [];
 
-bot.start(ctx => ctx.reply(greetingText, mainMenu));
+bot.start(ctx => {
+    postUserInfo(ctx.from).then(r => {
+        console.log(r);
+    })
+    ctx.reply(greetingText, mainMenu).then()
+});
 
 bot.hears('🎮 Я просто смотрю', ctx => {
     getGamesFromCore("PSN", 1, 5).then(result => {
