@@ -1,12 +1,16 @@
-import Telegraf from 'telegraf';
+import Telegraf, {session, Stage} from 'telegraf';
 import {TELEGRAM_BOT_KEY} from './constants/constants.js';
 import {exploreGame, mainMenu} from "./keyboard/keyboard";
 import {greetingText} from "./constants/constants";
 import {getGamesFromCore} from "./utils/utils";
+import {sellGameScene} from "./scenes/scenes";
 
 
 const bot = new Telegraf(TELEGRAM_BOT_KEY);
+const stage = new Stage([sellGameScene]);
 // bot.use(Telegraf.log())
+bot.use(session());
+bot.use(stage.middleware());
 
 bot.catch(error => {
     console.log('telegraf error', error.response, error.parameters, error.on || error)
@@ -28,6 +32,12 @@ bot.hears('🎮 Я просто смотрю', ctx => {
             }).then();
     });
 
+});
+
+bot.action('exploreSellGame', ctx => {
+    let gameName = ctx.update.callback_query.message.caption.substr(0,
+        ctx.update.callback_query.message.caption.indexOf('\n'));
+    ctx.scene.enter('sellGameScene', {gameName: gameName});
 });
 
 bot.action('exploreNextGame', ctx => {
