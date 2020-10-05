@@ -41,12 +41,12 @@ bot.hears('🎮 Я просто смотрю', ctx => {
 });
 
 bot.action('exploreNextGame', ctx => {
-    if (currentGameNumb === gamesToExplore.length - 1){
+    if (currentGameNumb === gamesToExplore.length - 2){
+        currentGamePage++
         getGamesFromCore(PSN_PLATFORM, currentGamePage, GAMES_PAGE_SIZE).then(result => {
             gamesToExplore = gamesToExplore.concat(result.data.games);
-        }).then()
+        })
         currentGameNumb++
-        currentGamePage++
     } else {
         currentGameNumb++
     }
