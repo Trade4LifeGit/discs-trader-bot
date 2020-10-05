@@ -1,24 +1,7 @@
 export const TELEGRAM_BOT_KEY = "960038286:AAGZZHaFHCj1VCxvkBhGTLAYYWxd7DT7JNk";
 export const BOT_CORE_URL = "http://localhost:8081";
-
-export const greetingText = "Привет! Это - телеграм-бот, предназначеный для обмена играми для PS4! Бот в разработке, " +
-    "так что может не работать часть функций или все функции вообще. Enjoy!";
-
-export const cancelButtonText = '❌ Cancel';
-
-export const exploreButtonText = '🎮 Я просто смотрю';
-export const myOffersButtonText = '🤝 Мои объявления';
-export const sellGamesButtonText = '➡️ Продать игру';
-export const buyGamesButtonText = '⬅️ Купить игру'
-
-export const previousGameButtonText = '⬅️ Previous';
-export const nextGameButtonText = 'Next ➡️';
-export const buyGameButtonText = 'Buy this game 🤝';
-export const sellGameButtonText = 'Sell this game 💰️';
-export const thisGameInPSNButtonText = 'This game in PSN';
-
-export const costValidationErrorText = 'A value you entered is not a number! Please enter a valid value!';
-// export const offerPublishedText = `The offer of selling "${gameName}" for ${gameCost} is published`;
+export const PSN_PLATFORM = "PSN";
+export const GAMES_PAGE_SIZE = 3;
 
 // Метод Сёмы для апдейтов
 const replaceReplyMarkup = async(ctx, newMarkup) => {
@@ -31,3 +14,10 @@ const replaceReplyMarkup = async(ctx, newMarkup) => {
         console.log("Не получилось удалить кнопочки после апдейта поста");
     }
 }
+
+export const greetingText = "Привет! Это - телеграм бот, предназначеный для обмена играми для PS4! Бот в разработке, " +
+    "так что может не работать часть функций или все функции вообще. Enjoy!";
+export const FIRST_GAME_WARNING = "Это первая игра в списке!";
+
+export const cancelButtonText = '❌ Cancel';
+export const exploreButtonText = '🎮 Я просто смотрю';
