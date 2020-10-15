@@ -9,19 +9,14 @@ const stage = new Stage([sellGameScene]);
 commandsHandler.use(session());
 commandsHandler.use(stage.middleware());
 
-
 // move to session, think of using scenes here. Some shit going on with indexes
 let currentGameNumb = 0;
 let gamesToExplore = [];
 let currentGamePage = 1;
 
-console.log(commandsHandler.telegram)
-
-
 commandsHandler.hears('🎮 Я просто смотрю', ctx => {
     getGamesFromCore(PSN_PLATFORM, currentGamePage, GAMES_PAGE_SIZE).then(result => {
         gamesToExplore = result.data.games;
-        console.log(commandsHandler.telegram)
         ctx.replyWithPhoto(gamesToExplore[currentGameNumb].image,
             {
                 reply_markup: exploreGame(gamesToExplore[currentGameNumb].psnURL),
