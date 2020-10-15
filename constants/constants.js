@@ -21,3 +21,11 @@ export const FIRST_GAME_WARNING = "Это первая игра в списке!
 
 export const cancelButtonText = '❌ Cancel';
 export const exploreButtonText = '🎮 Я просто смотрю';
+export const buyGameButtonText = 'Купить';
+export const buyGamesButtonText = 'Купить игру';
+export const myOffersButtonText = 'Мои объявления';
+export const nextGameButtonText = 'Слудующая';
+export const previousGameButtonText = 'Предыдущая';
+export const sellGameButtonText = 'Продать';
+export const sellGamesButtonText = 'Продать игру';
+export const thisGameInPSNButtonText = 'Это игра в PSN';

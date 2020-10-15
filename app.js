@@ -22,10 +22,8 @@ let gamesToExplore = [];
 let currentGamePage = 1;
 
 bot.start(ctx => {
-    postUserInfo(ctx.from).catch(error => {
-        console.log(error);
-    })
-    ctx.reply(greetingText, mainMenu).then()
+    postUserInfo(ctx).then();
+    ctx.reply(greetingText, mainMenu).then();
 });
 
 bot.hears('🎮 Я просто смотрю', ctx => {
