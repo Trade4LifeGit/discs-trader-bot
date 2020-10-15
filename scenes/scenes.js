@@ -1,6 +1,6 @@
 import WizardScene from "telegraf/scenes/wizard"
-import {cancelMenu, exploreGame, mainMenu} from "../keyboard/keyboard";
-import {cancelButtonText, GAMES_PAGE_SIZE, PSN_PLATFORM} from "../constants/constants";
+import {cancelMenu, mainMenu} from "../keyboard/keyboard";
+import {cancelButtonText} from "../constants/constants";
 
 export const sellGameScene = new WizardScene('sellGameScene',
     (ctx) => {
