@@ -1,7 +1,7 @@
 import Telegraf, {session, Stage} from 'telegraf';
 import {TELEGRAM_BOT_KEY} from './constants/constants.js';
 import {mainMenu} from "./keyboard/keyboard";
-import {greetingText} from "./constants/constants";
+import {GREETING_TEXT} from "./constants/constants";
 import {postUserInfo} from "./utils/utils";
 import {commandsHandler} from "./commands/commands";
 
@@ -15,7 +15,7 @@ bot.catch(error => {
 
 bot.start(ctx => {
     postUserInfo(ctx).then();
-    ctx.reply(greetingText, mainMenu).then();
+    ctx.reply(GREETING_TEXT, mainMenu).then();
 });
 
 bot.startPolling();
