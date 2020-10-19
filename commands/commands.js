@@ -1,6 +1,12 @@
 import {Composer, session, Stage} from "telegraf";
 import {getGamesFromCore} from "../utils/utils";
-import {FIRST_GAME_WARNING, GAMES_PAGE_SIZE, mockedOffers, PSN_PLATFORM} from "../constants/constants";
+import {
+    BUY_GAME_TEXT_PREFIX,
+    FIRST_GAME_WARNING,
+    GAMES_PAGE_SIZE,
+    mockedOffers,
+    PSN_PLATFORM
+} from "../constants/constants";
 import {buyGameOffersMenu, exploreGame} from "../keyboard/keyboard";
 import {sellGameFromExploreScene} from "../scenes/scenes";
 
@@ -72,5 +78,6 @@ commandsHandler.action('exploreSellGame', ctx => {
 });
 
 commandsHandler.action('exploreBuyGame', ctx => {
-    ctx.reply("test", {reply_markup: buyGameOffersMenu(mockedOffers)}).then()
+    ctx.reply(BUY_GAME_TEXT_PREFIX(ctx.update.callback_query.message.caption),
+        {reply_markup: buyGameOffersMenu(mockedOffers)}).then()
 })

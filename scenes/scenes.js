@@ -21,12 +21,3 @@ export const sellGameFromExploreScene = new WizardScene('sellGameFromExploreScen
         }
         return ctx.scene.leave();
     });
-
-export const buyGameFromExploreScene = new WizardScene('buyGameFromExploreScene',
-    (ctx) => {
-        ctx.reply('Buy', cancelMenu)
-    },
-    (ctx) => {
-
-    }
-);

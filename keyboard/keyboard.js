@@ -30,7 +30,6 @@ export const cancelMenu =
 export const buyGameOffersMenu = (offers) => {
     let offersAsButtons = [];
     for (let i = 0; i < offers.length; i++){
-        console.log("test")
         let offer = offers[i];
         offersAsButtons.push(
             [Markup.urlButton(offer.cost.concat(' ').concat(offer.telegramNickname),

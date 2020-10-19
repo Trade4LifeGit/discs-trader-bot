@@ -20,6 +20,10 @@ export const sellGameButtonText = '🤝 Продать';
 export const sellGamesButtonText = '🤝 Продать игру';
 export const thisGameInPSNButtonText = '🎮 Это игра в PSN';
 
+export const BUY_GAME_TEXT_PREFIX = (gameName) => {
+    return `Объявление о продаже "${gameName}":`;
+};
+
 export const mockedOffers = [
     {
         telegramNickname: "Azaratos",
