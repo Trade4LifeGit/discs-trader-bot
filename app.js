@@ -1,9 +1,9 @@
-import Telegraf, {session, Stage} from 'telegraf';
+import Telegraf from 'telegraf';
 import {TELEGRAM_BOT_KEY} from './constants/constants.js';
 import {mainMenu} from "./keyboard/keyboard";
 import {GREETING_TEXT} from "./constants/constants";
 import {postUserInfo} from "./utils/utils";
-import {commandsHandler} from "./commands/commands";
+import {commandsHandler} from "./commands/exploreGames";
 
 
 const bot = new Telegraf(TELEGRAM_BOT_KEY);

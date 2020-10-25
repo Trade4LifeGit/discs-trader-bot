@@ -1,4 +1,4 @@
-import {BOT_CORE_URL, GAMES_PAGE_SIZE, PSN_PLATFORM} from "../constants/constants";
+import {BOT_CORE_URL, NO_PIC_THUMB_URL} from "../constants/constants";
 import axios from 'axios';
 import {exploreGame} from "../keyboard/keyboard";
 
@@ -21,4 +21,14 @@ export const postUserInfo = async (ctx) => {
     return axios.post(postUserUrl, data, {
         headers: headers
     });
+}
+
+export const updateGameMessageOnExplore = (ctx, imageUrl, titleName, psnUrl) => {
+    ctx.editMessageMedia({
+        type: "photo",
+        media: imageUrl ? imageUrl : NO_PIC_THUMB_URL,
+        caption: titleName
+    }, {
+        reply_markup: exploreGame(psnUrl),
+    }).then(() => ctx.answerCbQuery());
 }
