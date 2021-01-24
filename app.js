@@ -1,10 +1,8 @@
 import Telegraf, {session} from 'telegraf';
-import {TELEGRAM_BOT_KEY} from './constants/constants.js';
 import {mainMenu} from "./keyboard/keyboard";
-import {GREETING_TEXT} from "./constants/constants";
-import {postUserInfo} from "./utils/utils";
+import {GREETING_TEXT, TELEGRAM_BOT_KEY} from "./constants/constants";
 import {exploreGamesCommandsComposer} from "./composers/explore_games/exploreGames";
-import {sellGamesCommandsComposer} from "./commands/sellGame";
+import {sellGamesCommandsComposer} from "./composers/sell_game/sellGame";
 
 
 const bot = new Telegraf(TELEGRAM_BOT_KEY);
@@ -17,7 +15,7 @@ bot.catch(error => {
 });
 
 bot.start(ctx => {
-    postUserInfo(ctx).then();
+    // postUserInfo(ctx).then();
     ctx.reply(GREETING_TEXT, mainMenu).then();
 });
 

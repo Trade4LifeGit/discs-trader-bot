@@ -34,24 +34,3 @@ export const PAGINATION_ERROR_COLLISION_TEXT = (userNickname) => {
 }
 
 export const GAMES_PAGE_SIZE = 5;
-
-export const MOCKED_OFFERS = [
-    {
-        telegramNickname: "Azaratos",
-        telegramId: "30802666",
-        ps4Id: "UP0082-CUSA18774_00-0000000000000000",
-        cost: "20.3"
-    },
-    {
-        telegramNickname: "puzzleqw",
-        telegramId: "486069613",
-        ps4Id: "UP0082-CUSA18774_00-0000000000000000",
-        cost: "30.1"
-    },
-    {
-        telegramNickname: "freeda_slaves",
-        telegramId: "272279892",
-        ps4Id: "UP0082-CUSA18774_00-0000000000000000",
-        cost: "15.2"
-    }
-]
