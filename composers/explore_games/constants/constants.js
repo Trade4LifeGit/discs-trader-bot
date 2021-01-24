@@ -17,8 +17,12 @@ export const COST_VALIDATION_ERROR_MESSAGE = 'Введённое значени�
 export const SELL_GAME_COST = 'Введите стоимость игры';
 
 export const BUY_GAME_TEXT_PREFIX = (gameName) => {
-    return `Объявление о продаже "${gameName}":`;
+    return `Объявления о продаже "${gameName}":`;
 };
+
+export const SELL_GAME_TEXT = (gameName, price) => {
+    return `Объявление о продаже "${gameName}" за ${price} р. опубликовано!`;
+}
 
 export const GAMES_PAGE_SIZE = 5;
 
