@@ -3,7 +3,7 @@ import {TELEGRAM_BOT_KEY} from './constants/constants.js';
 import {mainMenu} from "./keyboard/keyboard";
 import {GREETING_TEXT} from "./constants/constants";
 import {postUserInfo} from "./utils/utils";
-import {exploreGamesCommandsComposer} from "./commands/exploreGames";
+import {exploreGamesCommandsComposer} from "./composers/explore_games/exploreGames";
 import {sellGamesCommandsComposer} from "./commands/sellGame";
 
 
