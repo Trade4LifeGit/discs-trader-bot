@@ -27,6 +27,10 @@ export const BUY_GAME_TEXT_PREFIX = (gameName) => {
 
 export const SELL_GAME_TEXT = (gameName, price) => {
     return `Объявление о продаже "${gameName}" за ${price} р. опубликовано!`;
+};
+
+export const PAGINATION_ERROR_COLLISION_TEXT = (userNickname) => {
+    return `User "${userNickname}" got collision error on explore!`
 }
 
 export const GAMES_PAGE_SIZE = 5;
