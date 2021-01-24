@@ -2,7 +2,7 @@ import {Composer, Stage} from "telegraf";
 import {EXPLORE_BUTTON_TEXT, PSN_PLATFORM} from "../../constants/constants";
 import {exploreGame} from "./keyboards/exploreButtons";
 import {buyGameOffersMenu} from "./keyboards/offersBuyGameMenu";
-import {BUY_GAME_TEXT_PREFIX, GAMES_PAGE_SIZE, MOCKED_OFFERS} from "./constants/constants";
+import {BUY_GAME_TEXT_PREFIX, GAMES_PAGE_SIZE} from "./constants/constants";
 import {sellGameFromExploreScene} from "./scenes/sellGame";
 import {getGamesFromCore} from "./utils/getGamesFromCore";
 import {nextGame} from "./utils/nextGame";
@@ -38,12 +38,10 @@ exploreGamesCommandsComposer.hears(EXPLORE_BUTTON_TEXT, ctx => {
 
 exploreGamesCommandsComposer.action('exploreNextGame', ctx => {
     nextGame(ctx, paginatedItem);
-    console.log("outer next", paginatedItem);
 });
 
 exploreGamesCommandsComposer.action('explorePreviousGame', ctx => {
     previousGame(ctx, paginatedItem);
-    console.log("outer prev", paginatedItem);
 });
 
 exploreGamesCommandsComposer.action('exploreSellGame', ctx => {
@@ -53,5 +51,5 @@ exploreGamesCommandsComposer.action('exploreSellGame', ctx => {
 
 exploreGamesCommandsComposer.action('exploreBuyGame', ctx => {
     ctx.reply(BUY_GAME_TEXT_PREFIX(ctx.update.callback_query.message.caption),
-        {reply_markup: buyGameOffersMenu(MOCKED_OFFERS)}).then()
+        {reply_markup: buyGameOffersMenu(paginatedItem.games[paginatedItem.index].offers)}).then()
 })

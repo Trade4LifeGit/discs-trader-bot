@@ -18,7 +18,6 @@ export const nextGame = (ctx, paginatedItem) => {
 
             let game = paginatedItem.games[0].game;
             updateGameMessage(ctx, game.image, game.title, game.psnURL);
-            console.log("last game last page")
         });
 
     } else if (paginatedItem.index === paginatedItem.games.length - 1
@@ -35,7 +34,6 @@ export const nextGame = (ctx, paginatedItem) => {
 
             let game = paginatedItem.games[paginatedItem.index].game;
             updateGameMessage(ctx, game.image, game.title, game.psnURL);
-            console.log("last game")
         });
 
     } else {
@@ -46,6 +44,5 @@ export const nextGame = (ctx, paginatedItem) => {
 
         let game = paginatedItem.games[paginatedItem.index].game;
         updateGameMessage(ctx, game.image, game.title, game.psnURL);
-        console.log("next game")
     }
 }

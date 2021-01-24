@@ -5,9 +5,10 @@ export const buyGameOffersMenu = (offers) => {
     let offersAsButtons = [];
     for (let i = 0; i < offers.length; i++){
         let offer = offers[i];
+        let telegramNickname = offer.telegramUserId.substring(1);
         offersAsButtons.push(
-            [Markup.urlButton(offer.cost.concat(' ').concat(offer.telegramNickname),
-                TELEGRAM_LINK_PREFIX.concat(offer.telegramNickname), false)]
+            [Markup.urlButton(offer.price + (' ').concat(telegramNickname),
+                TELEGRAM_LINK_PREFIX.concat(telegramNickname), false)]
         );
     }
     return {
