@@ -46,7 +46,8 @@ exploreGamesCommandsComposer.action('explorePreviousGame', ctx => {
 
 exploreGamesCommandsComposer.action('exploreSellGame', ctx => {
     let gameName = ctx.update.callback_query.message.caption;
-    ctx.scene.enter('sellGameFromExploreScene', {gameName: gameName});
+    ctx.scene.enter('sellGameFromExploreScene', {gameName: gameName,
+        gameId: paginatedItem.games[paginatedItem.index].game.id});
 });
 
 exploreGamesCommandsComposer.action('exploreBuyGame', ctx => {
