@@ -26,10 +26,8 @@ export const sellGameFromExploreScene = new WizardScene('sellGameFromExploreScen
                 })
         } else if (gameCost === CANCEL_BUTTON_TEXT){
             ctx.reply('Canceled', mainMenu);
-            return ctx.scene.leave();
         } else {
-            ctx.reply(COST_VALIDATION_ERROR_MESSAGE);
-            return;
+            ctx.reply(COST_VALIDATION_ERROR_MESSAGE, mainMenu);
         }
         return ctx.scene.leave();
     });

@@ -1,6 +1,6 @@
 import Telegraf, {session} from 'telegraf';
 import {mainMenu} from "./keyboard/keyboard";
-import {GREETING_TEXT, TELEGRAM_BOT_KEY} from "./constants/constants";
+import {BOT_STARTED_LOG, GREETING_TEXT, TELEGRAM_BOT_KEY} from "./constants/constants";
 import {exploreGamesCommandsComposer} from "./composers/explore_games/exploreGames";
 import {sellGamesCommandsComposer} from "./composers/sell_game/sellGame";
 
@@ -16,6 +16,7 @@ bot.catch(error => {
 
 bot.start(ctx => {
     // postUserInfo(ctx).then();
+    console.log(BOT_STARTED_LOG(ctx.update.message.from.username));
     ctx.reply(GREETING_TEXT, mainMenu).then();
 });
 

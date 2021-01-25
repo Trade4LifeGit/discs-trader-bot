@@ -1,14 +1,15 @@
 import {Composer, Stage} from "telegraf";
 import {SELL_GAMES_BUTTON_TEXT} from "../../constants/constants";
-import {sellGameScene} from "./scenes/sellGameScene";
+import {findGameScene} from "./scenes/findGameScene";
 import {GAMES_PROPOSITIONS_SIZE} from "./constants/constants";
+import {sellGameScene} from "./scenes/sellGameScene";
 
 export const sellGamesCommandsComposer = new Composer();
-const stage = new Stage([sellGameScene]);
+const stage = new Stage([findGameScene, sellGameScene]);
 sellGamesCommandsComposer.use(stage.middleware());
 
 sellGamesCommandsComposer.hears(SELL_GAMES_BUTTON_TEXT, ctx => {
-    ctx.scene.enter('sellGameScene');
+    ctx.scene.enter('findGameScene');
 });
 
 /** Странная конструкция, требующая пояснения (и, возмножно, переделки):
@@ -20,6 +21,7 @@ sellGamesCommandsComposer.hears(SELL_GAMES_BUTTON_TEXT, ctx => {
  * */
 for (let i = 0; i < GAMES_PROPOSITIONS_SIZE; i++){
     sellGamesCommandsComposer.action('propositionSelected' + i, ctx => {
-        console.log(i, ctx.callbackQuery.message.reply_markup.inline_keyboard[i][0].text);
+        ctx.session.chosedIndex = i;
+        ctx.scene.enter('sellGameScene');
     })
 }
