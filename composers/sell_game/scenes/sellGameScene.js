@@ -3,7 +3,7 @@ import {
     WRITE_DOWN_COST_TEXT, ERROR_PLACING_OFFER
 } from "../constants/constants";
 import {cancelMenu, mainMenu} from "../../../keyboard/keyboard";
-import {CANCEL_BUTTON_TEXT, PSN_PLATFORM} from "../../../constants/constants";
+import {CANCEL_BUTTON_TEXT, PSN_PLATFORM} from "../../../constants";
 import WizardScene from 'telegraf/scenes/wizard';
 import {publishNewOffer} from "../utils/publishNewOffer";
 

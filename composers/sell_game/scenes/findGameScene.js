@@ -1,4 +1,4 @@
-import {CANCEL_BUTTON_TEXT, PSN_PLATFORM} from "../../../constants/constants";
+import {CANCEL_BUTTON_TEXT, PSN_PLATFORM} from "../../../constants";
 import {cancelMenu, mainMenu} from "../../../keyboard/keyboard";
 import WizardScene from 'telegraf/scenes/wizard';
 import {

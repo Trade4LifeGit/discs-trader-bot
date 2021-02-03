@@ -1,5 +1,5 @@
 import {Composer, Stage} from "telegraf";
-import {SELL_GAMES_BUTTON_TEXT} from "../../constants/constants";
+import {SELL_GAMES_BUTTON_TEXT} from "../../constants";
 import {findGameScene} from "./scenes/findGameScene";
 import {GAMES_PROPOSITIONS_SIZE} from "./constants/constants";
 import {sellGameScene} from "./scenes/sellGameScene";

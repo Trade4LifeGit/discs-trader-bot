@@ -1,5 +1,5 @@
 import {Composer, Stage} from "telegraf";
-import {EXPLORE_BUTTON_TEXT, PSN_PLATFORM} from "../../constants/constants";
+import {EXPLORE_BUTTON_TEXT, PSN_PLATFORM} from "../../constants";
 import {exploreGame} from "./keyboards/exploreButtons";
 import {buyGameOffersMenu} from "./keyboards/offersBuyGameMenu";
 import {BUY_GAME_TEXT_PREFIX, GAMES_PAGE_SIZE} from "./constants/constants";

@@ -1,5 +1,5 @@
 import {getGamesFromCore} from "./getGamesFromCore";
-import {PSN_PLATFORM} from "../../../constants/constants";
+import {PSN_PLATFORM} from "../../../constants";
 import {GAMES_PAGE_SIZE} from "../constants/constants";
 import {updateGameMessage} from "./updateGameMessage";
 

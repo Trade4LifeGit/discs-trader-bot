@@ -1,4 +1,4 @@
-import {BOT_CORE_URL} from "../../../constants/constants";
+import {BOT_CORE_URL} from "../../../constants";
 
 export const GET_GAMES_URL = (platform, page, size) => {
     return `${BOT_CORE_URL}/api/${platform}/offers/published?page=${page}&size=${size}`;

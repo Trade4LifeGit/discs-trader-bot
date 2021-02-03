@@ -1,4 +1,4 @@
-import {POST_USER_URL, PSN_PLATFORM} from "../constants/constants";
+import {POST_USER_URL, PSN_PLATFORM} from "../constants";
 import axios from 'axios';
 
 export const postUserInfo = async (ctx) => {

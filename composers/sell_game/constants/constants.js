@@ -1,4 +1,4 @@
-import {BOT_CORE_URL} from "../../../constants/constants";
+import {BOT_CORE_URL} from "../../../constants";
 
 export const GAMES_PROPOSITIONS_SIZE = 8;
 export const SELL_OFFER_TYPE = 'SELL'
