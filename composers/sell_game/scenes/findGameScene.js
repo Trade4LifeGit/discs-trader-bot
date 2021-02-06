@@ -1,4 +1,4 @@
-import {CANCEL_BUTTON_TEXT, PSN_PLATFORM} from "../../../constants";
+import {CANCEL_BUTTON_TEXT} from "../../../constants";
 import {cancelMenu, mainMenu} from "../../../keyboard/keyboard";
 import WizardScene from 'telegraf/scenes/wizard';
 import {
@@ -22,7 +22,7 @@ export const findGameScene = new WizardScene('findGameScene',
             return ctx.scene.leave();
         }
 
-        getTheListOfGamesByName(PSN_PLATFORM, gameName)
+        getTheListOfGamesByName(gameName)
             .then(response => {
                 ctx.session.listOfGames = response.data.games;
                 ctx.reply(CHOOSE_FROM_THE_LIST_TEXT,
