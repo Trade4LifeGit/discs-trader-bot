@@ -27,6 +27,8 @@ exploreGamesCommandsComposer.hears(EXPLORE_BUTTON_TEXT, ctx => {
                 reply_markup: exploreGame(paginatedItem.games[0].game.psnURL),
                 caption: paginatedItem.games[0].game.title
             }).then();
+    }).catch(error => {
+        console.log("Request exception on explore ", error)
     });
 });
 

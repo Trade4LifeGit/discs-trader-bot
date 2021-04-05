@@ -34,7 +34,7 @@ export const buyFindGameScene = new WizardScene('buyFindGameScene',
             .then(response => {
                 const propositions = response.data.propositions;
 
-                if (propositions){
+                if (propositions.length !== 0){
                     ctx.session.propositions = propositions;
 
                     ctx.reply(CHOOSE_FROM_THE_LIST_TEXT,
