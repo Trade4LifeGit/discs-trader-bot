@@ -26,9 +26,8 @@ export const buyGameScene = new WizardScene('buyGameScene',
                     return ctx.scene.leave();
                 } else {
 
-                    // TODO: Can't send main menu and list of sellers in one message
-
                     ctx.reply(OFFERS_TEXT, {reply_markup: offersMenu(offers)});
+                    // TODO: Can't send main menu and list of sellers in one message (may be ads here)
                     ctx.reply(CHOOSE_SELLER_FROM_LIST_TEXT, mainMenu);
 
                     return ctx.scene.leave();

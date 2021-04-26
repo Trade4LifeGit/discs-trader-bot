@@ -38,4 +38,4 @@ export const NO_OFFERS_TEXT = (gameName) => {
 
 export const OFFERS_TEXT = 'Продают:';
 
-export const CHOOSE_SELLER_FROM_LIST_TEXT = 'Выберите подходящее предложение из списка';
+export const CHOOSE_SELLER_FROM_LIST_TEXT = 'Выберите подходящее предложение из списка ⬆️';
