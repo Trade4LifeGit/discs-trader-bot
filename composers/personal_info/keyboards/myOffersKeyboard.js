@@ -18,7 +18,6 @@ export const myOffersKeyboard = (gamesWithOffers) => {
             );
         }
     }
-    // Если не влезает на одну страничку (мерять размер)
     offersAsButtons.push([
         {"text": PREVIOUS_PAGE, "callback_data": 'myOffersPrevPage', "hide": false},
         {"text": NEXT_PAGE, "callback_data": 'myOffersNextPage', "hide": false}
