@@ -9,16 +9,17 @@ export const myOffersKeyboard = (gamesWithOffers) => {
         for (let j = 0; j < gamesWithOffers[i].offers.length; j++){
             let game = gamesWithOffers[i].game;
             let offer = gamesWithOffers[i].offers[j];
+
+            let buttonIndex = i + j;
+
             offersAsButtons.push(
-                // опции: удалить / изменить цену
                 [{"text": game.title + ': ' + offer.price + BYN_CURRENCY, "callback_data": 'test', "hide": false}], [
-                    {"text": DELETE_OFFER, "callback_data": 'test', "hide": false},
+                    {"text": DELETE_OFFER, "callback_data": 'deleteOffer' + buttonIndex, "hide": false},
                     {"text": EDIT_OFFER, "callback_data": 'test', "hide": false}
                 ]
             );
         }
     }
-    // Если не влезает на одну страничку (мерять размер)
     offersAsButtons.push([
         {"text": PREVIOUS_PAGE, "callback_data": 'myOffersPrevPage', "hide": false},
         {"text": NEXT_PAGE, "callback_data": 'myOffersNextPage', "hide": false}
