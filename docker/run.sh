@@ -1,0 +1,1 @@
+docker run -d -it --name=tb tradebot
