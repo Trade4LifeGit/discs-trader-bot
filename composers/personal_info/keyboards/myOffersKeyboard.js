@@ -15,7 +15,7 @@ export const myOffersKeyboard = (gamesWithOffers) => {
             offersAsButtons.push(
                 [{"text": game.title + ': ' + offer.price + BYN_CURRENCY, "callback_data": 'test', "hide": false}], [
                     {"text": DELETE_OFFER, "callback_data": 'deleteOffer' + buttonIndex, "hide": false},
-                    {"text": EDIT_OFFER, "callback_data": 'test', "hide": false}
+                    {"text": EDIT_OFFER, "callback_data": 'changeOffer' + buttonIndex, "hide": false}
                 ]
             );
         }

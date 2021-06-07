@@ -1,6 +1,6 @@
 import {CONFIRM_OFFER_DELETION} from "../constants/constants";
 
-export const areYouSureKeyboard = () => {
+export const areYouSureDeleteOfferKeyboard = () => {
     return {
         inline_keyboard: [
             [

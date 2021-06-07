@@ -34,7 +34,21 @@ export const EDIT_OFFER = "✍️ Изменить цену";
 export const ARE_YOU_SURE = (gameTitle, offerCost) => {
     return `Вы уверены что хотите удалить объявление о продаже "${gameTitle}" за ${offerCost}${BYN_CURRENCY}?`;
 };
+
+export const ARE_YOU_SURE_CHANGE = (gameTitle, oldOfferCost, newOfferCost) => {
+    return `Вы уверены, что хотите изменить цену предложения о продаже "${gameTitle}" с ${oldOfferCost} на ${newOfferCost}?`;
+};
+
+export const ENTER_NEW_OFFER_PRICE = "Введите новую цену предложения";
+export const CONFIRM_OFFER_CHANGE = "Уверен, изменить предложение";
+export const OFFER_CHANGED = "Цена изменена!";
+export const ERROR_CHANGING_OFFER_PRICE = "При попытке изменить цену возникла ошибка!";
+export const OFFER_CHANGE_CANCELLED = "Цена предложения не изменена!";
+export const NEW_OFFER_PRICE_VALIDATION_FAILED = "Новая цена указана неверно!";
+
 export const CONFIRM_OFFER_DELETION = "Уверен, удалить предложение";
+export const ERROR_DELETING_OFFER = "При попытке удалить предложение возникла ошибка!";
+export const OFFER_DELETED = "Предложение удалено!";
 
 export const GET_UPDATE_OFFER_URL = (platform, offerId) => {
     return `${BOT_CORE_URL}/api/${platform}/offers/${offerId}`;
